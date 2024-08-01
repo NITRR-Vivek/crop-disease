@@ -23,16 +23,17 @@ async def predict(file: UploadFile = File(...)):
     predictions = model.predict(img_array)
     predicted_class_index = np.argmax(predictions[0])
 
-    class_labels = ['Tomato___Bacterial_spot',
-        'Tomato___Early_blight',
-        'Tomato___Late_blight',
-        'Tomato___Leaf_Mold',
-        'Tomato___Septoria_leaf_spot',
-        'Tomato___Spider_mites Two-spotted_spider_mite',
-        'Tomato___Target_Spot',
-        'Tomato___Tomato_Yellow_Leaf_Curl_Virus',
-        'Tomato___Tomato_mosaic_virus',
-        'Tomato___healthy']
+    class_labels = [
+        'Bacterial_spot',
+        'Early_blight',
+        'Late_blight',
+        'Leaf_Mold',
+        'Septoria_leaf_spot',
+        'Spider_mites Two-spotted_spider_mite',
+        'Target_Spot',
+        'Tomato_Yellow_Leaf_Curl_Virus',
+        'Tomato_mosaic_virus',
+        'healthy']
     predicted_class = class_labels[predicted_class_index]
 
     os.remove(file.filename)  # Clean up the uploaded file
